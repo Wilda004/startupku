@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sponsorship</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
+</head>
+<body>
+<header>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="logo">Logo Website</div>
+    <div class="auth-container">
+        <button onclick="showLogin()">Login</button>
+        <button onclick="showSignup()">Sign Up</button>
+    </div>
+</header>
+
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+    <div class="contact-info">
+        <p>Call Us Now!</p>
+        <p><img src="path/to/email-logo.png" alt="Email"> info@markdesign.net</p>
+        <p><img src="path/to/whatsapp-logo.png" alt="WhatsApp"> 081 6540 7463</p>
+        <p><img src="path/to/instagram-logo.png" alt="Instagram"> @markdesign</p>
+    </div>
+</div>
+
+<main>
+    <section id="home">
+        <h1>Dukung Kami!</h1>
+        <p>Deskripsi singkat tentang acara atau kegiatan.</p>
+        <div class="umkm-container">
+            <div class="umkm-box" data-lokasi="Lokasi 1" data-whatsapp="+62 123456789">
+                <img src="path/to/logo1.png" alt="UMKM 1">
+                <h3>UMKM 1</h3>
+                <p>Deskripsi UMKM 1</p>
+            </div>
+            <div class="umkm-box" data-lokasi="Lokasi 2" data-whatsapp="+62 123456789">
+                <img src="path/to/logo2.png" alt="UMKM 2">
+                <h3>UMKM 2</h3>
+                <p>Deskripsi UMKM 2</p>
+            </div>
+            <div class="umkm-box" data-lokasi="Lokasi 3" data-whatsapp="+62 123456789">
+                <img src="path/to/logo3.png" alt="UMKM 3">
+                <h3>UMKM 3</h3>
+                <p>Deskripsi UMKM 3</p>
+            </div>
+            <div class="umkm-box" data-lokasi="Lokasi 4" data-whatsapp="+62 123456789">
+                <img src="path/to/logo4.png" alt="UMKM 4">
+                <h3>UMKM 4</h3>
+                <p>Deskripsi UMKM 4</p>
+            </div>
+            <div class="umkm-box" data-lokasi="Lokasi 5" data-whatsapp="+62 123456789">
+                <img src="path/to/logo5.png" alt="UMKM 5">
+                <h3>UMKM 5</h3>
+                <p>Deskripsi UMKM 5</p>
+            </div>
+        </div>
+        <div id="umkm-detail"></div>
+        <div class="sponsor-container">
+            <a href="#contact" class="sponsor-box">Cari Sponsor</a>
+            <a href="#contact" class="sponsor-box">Jadi Sponsor</a>
+        </div>
+    </section>
+</main>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Login</h2>
+        <div>
+            <button onclick="showLoginOptions('mahasiswa')">Mahasiswa</button>
+            <button onclick="showLoginOptions('umkm')">UMKM</button>
+        </div>
+        <form id="loginForm" style="display: none;">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Belum punya akun? <a href="javascript:void(0)" onclick="showSignup()">Daftar</a></p>
+    </div>
+</div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('signupModal')">&times;</span>
+        <h2>Sign Up</h2>
+        <div>
+            <button onclick="showSignupOptions('mahasiswa')">Mahasiswa</button>
+            <button onclick="showSignupOptions('umkm')">UMKM</button>
+        </div>
+        <form id="signupForm" style="display: none;">
+            <div id="signupFields">
+                <!-- Fields will be inserted here based on selection -->
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Website Sponsorship. Semua Hak Dilindungi.</p>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    header {
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .logo {
+        margin-right: 20px;
+        font-size: 20px;
+    }
+
+    .auth-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .auth-container button {
+        background: none;
+        border: 1px solid white;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #575757;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .contact-info p {
+        color: white;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    #home {
+        background: #f4f4f4;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .umkm-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .umkm-box {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        width: 100%;
+        max-width: 200px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .umkm-box img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .umkm-box h3 {
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .umkm-box p {
+        color: #666;
+    }
+
+    #home .sponsor-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .sponsor-box {
+        background: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 300px;
+    }
+
+    #umkm-detail {
+        margin-top: 20px;
+        padding: 10px;
+        background: rgba(226, 225, 225, 0.6);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        display: none;
+    }
+
+    #umkm-detail p {
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        flex-shrink: 0;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const umkmBoxes = document.querySelectorAll('.umkm-box');
+        const detailDiv = document.getElementById('umkm-detail');
+
+        umkmBoxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const lokasi = this.getAttribute('data-lokasi');
+                const whatsapp = this.getAttribute('data-whatsapp');
+                detailDiv.innerHTML = `<p>Lokasi: ${lokasi}</p><p>WhatsApp: ${whatsapp}</p>`;
+                detailDiv.style.display = 'block';
+                detailDiv.style.width = '80%';
+                detailDiv.style.maxWidth = '150px';
+                detailDiv.style.position = 'absolute';
+                detailDiv.style.top = (this.offsetTop + this.offsetHeight) + 'px';
+                detailDiv.style.left = (this.offsetLeft + (this.offsetWidth - detailDiv.offsetWidth) / 2) + 'px';
+            });
+        });
+
+        detailDiv.addEventListener('click', function() {
+            detailDiv.style.display = 'none';
+        });
+
+        // Close detail box when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.umkm-box') && !event.target.closest('#umkm-detail')) {
+                detailDiv.style.display = 'none';
+            }
+        });
+    });
+
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.style.width === '250px') {
+            sidebar.style.width = '0';
+        } else {
+            sidebar.style.width = '250px';
+        }
+    }
+
+    function showLogin() {
+        document.getElementById('loginModal').style.display = 'block';
+    }
+
+    function showSignup() {
+        document.getElementById('signupModal').style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    function showLoginOptions(type) {
+        const form = document.getElementById('loginForm');
+        form.style.display = 'block';
+        // Additional logic can be added here based on the type (mahasiswa or umkm)
+    }
+
+    function showSignupOptions(type) {
+        const form = document.getElementById('signupForm');
+        const fields = document.getElementById('signupFields');
+        form.style.display = 'block';
+        if (type === 'mahasiswa') {
+            fields.innerHTML = `
+                <label for="signupName">Nama:</label>
+                <input type="text" id="signupName" name="signupName" required>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" required>
+                <label for="signupWhatsApp">Nomor WhatsApp:</label>
+                <input type="text" id="signupWhatsApp" name="signupWhatsApp" required>
+            `;
+        } else if (type === 'umkm') {
+            fields.innerHTML = `
+                <label for="signupUmkmName">Nama UMKM:</label>
+                <input type="text" id="signupUmkmName" name="signupUmkmName" required>
+                <label for="signupAddress">Alamat:</label>
+                <input type="text" id="signupAddress" name="signupAddress" required>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" required>
+                <label for="signupWhatsApp">Nomor WhatsApp:</label>
+                <input type="text" id="signupWhatsApp" name="signupWhatsApp" required>
+            `;
+        }
+    }
+</script>
